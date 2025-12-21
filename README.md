@@ -1,94 +1,161 @@
-AI-Based Laser QR Code Tracking for Railway Track Fittings 🚆
+# 🚆 AI-Based Laser QR Code Tracking for Railway Track Fittings
 
-Smart India Hackathon 2025 | Team PiXels~ | PS ID: 25021
+**Smart India Hackathon 2025**  
+**Team:** PiXels~  
+**Problem Statement ID:** 25021  
+**Theme:** Transportation & Logistics (Hardware)
 
-This project proposes an AI-driven, end-to-end tracking system for Indian Railways track fittings using laser-engraved QR codes.
-The goal: replace manual, disconnected maintenance records with durable physical identification + digital traceability + AI-assisted decision support.
+---
 
-🔍 Problem Statement
+## 📌 Overview
 
-Railway track fittings currently:
-* Lack unique physical identifiers
-* Rely on manual / verbal fault reporting
-* Have disconnected records across UDM & TMS portals
-* Make lifecycle tracking and accountability painful (and slow)
+This project presents an **AI-driven, end-to-end tracking system** for Indian Railways track fittings using **laser-engraved QR codes**.
 
-💡 Our Solution
-Laser-engrave unique QR codes on each fitting → scan on field → sync with UDM/TMS → analyze using AI → act faster, smarter, and traceably.
+The objective is simple and overdue:  
+**replace manual, fragmented maintenance records with durable physical identification, digital traceability, and AI-assisted decision support.**
 
-🛠 System Overview
-1️⃣ Hardware Layer
-CNC laser engraving to mark unique QR codes on track fittings
-QR encodes a unique ID linked to:
-Vendor
-Batch
-Supply date
-Warranty
-Protective epoxy coating for long-term durability in harsh environments
+---
 
-2️⃣ Software Layer
-Cross-platform application (mobile + desktop)
-Role-based access:
-  - Patrolmen / Workers
-  - PWI
-  - Station Master
-  - Traffic Control
-  - Admin
-Core features:
-  - Scan QR → fetch fitting history instantly
-  - Log faults & inspections on-site
-  - AI-generated reports and trend analysis
-  - Alerts and dashboards for officers
-  - Offline mode with auto cloud sync
-    
-3️⃣ AI Layer
-QR image enhancement & purification
-→ Improves scan success for partially worn QR codes (minor damage)
-Pattern & trend analysis
-→ Detects recurring faults, vendor issues, and maintenance patterns
-Decision support
-→ Suggests actions based on historical data (not blind automation)
+## 🔍 Problem Statement
 
-🔁 End-to-End Workflow
-1. Patrolman identifies a suspected fault
-2. Scans laser-engraved QR on fitting
-3. AI enhances QR if worn
-4. Data pulled from UDM + TMS
-5. AI generates inspection report & recommendations
-6. Patrolman updates status via app
-7. PWI / authorities receive alerts & dashboards
-8. Updates pushed back to TMS → full lifecycle traceability
+Current railway track maintenance suffers from:
 
-🧠 Tech Stack
-Hardware
-  1. CNC Laser Engraver
-  2. Epoxy coating mechanism
-  3. Mobile devices for scanning
-Software
-  1. Frontend: React Native
-  2. Backend: Flask (Python)
-  3. Databases:
-      - PostgreSQL (primary)
-      - SQLite (offline cache)
-      - Redis (fast access / caching)
-      - Cloud: AWS
-AI / ML
-  1. TensorFlow
-  2. Hugging Face
-  3. Scikit-learn
-  4. Pandas
-Security
-  1. JWT Authentication
-  2. Role-Based Access Control (RBAC)
+- ❌ No unique physical identification for individual fittings  
+- ❌ Manual / verbal fault reporting  
+- ❌ Disconnected data across **UDM** and **TMS** portals  
+- ❌ Poor lifecycle traceability and delayed accountability  
 
-📽 Concept & Basic Working Demo:
-https://youtu.be/h-U8bMTx_vw
+Result: slower maintenance, higher costs, and avoidable safety risks.
 
-📈 Impact
-Faster fault reporting → reduced accident risk
-Clear accountability
-Real-time visibility across departments
-Reduced unnecessary replacements
-Optimized inventory & vendor evaluation
-Lower maintenance costs, Paperless, digital workflow
-Extended lifespan of fittings
+---
+
+## 💡 Proposed Solution
+
+**Laser-engrave unique QR codes on each fitting → scan on-field → sync with UDM/TMS → analyze using AI → act faster, smarter, and traceably.**
+
+Each fitting becomes **digitally traceable from manufacture to maintenance**.
+
+---
+
+## 🛠 System Architecture
+
+### 1️⃣ Hardware Layer
+- CNC laser engraving for permanent QR code marking  
+- Each QR links to:
+  - Vendor  
+  - Batch  
+  - Supply date  
+  - Warranty  
+- Protective epoxy coating for durability in harsh railway environments  
+
+---
+
+### 2️⃣ Software Layer
+- Cross-platform application (Mobile + Desktop)
+- Role-Based Access:
+  - Patrolmen / Workers  
+  - PWI  
+  - Station Master  
+  - Traffic Control  
+  - Admin  
+
+**Core Features**
+- QR scan → instant fitting history retrieval  
+- On-site fault and inspection logging  
+- AI-generated reports and trend analysis  
+- Dashboards and alerts for officers  
+- Offline-first mode with automatic cloud sync  
+
+---
+
+### 3️⃣ AI Layer
+- **QR Image Enhancement & Purification**  
+  Improves scan success for partially worn QR codes (minor damage)
+
+- **Pattern & Trend Analysis**  
+  Detects recurring faults, vendor issues, and maintenance trends
+
+- **Decision Support**  
+  Suggests actions based on historical data — assists humans, doesn’t replace them
+
+---
+
+## 🔁 End-to-End Workflow
+
+1. Patrolman identifies a suspected fault  
+2. Scans laser-engraved QR on the fitting  
+3. AI enhances QR if worn  
+4. Data fetched from **UDM + TMS**  
+5. AI generates inspection report and recommendations  
+6. Patrolman updates status via the app  
+7. PWI / authorities receive alerts and dashboards  
+8. Updates pushed back to TMS → full lifecycle traceability  
+
+---
+
+## 🧠 Tech Stack
+
+### Hardware
+- CNC Laser Engraver  
+- Epoxy coating mechanism  
+- Mobile devices for QR scanning  
+
+### Software
+- **Frontend:** React Native  
+- **Backend:** Flask (Python)  
+- **Databases:**  
+  - PostgreSQL (Primary)  
+  - SQLite (Offline cache)  
+  - Redis (Fast access / caching)  
+- **Cloud:** AWS  
+
+### AI / ML
+- TensorFlow  
+- Hugging Face  
+- Scikit-learn  
+- Pandas  
+
+### Security
+- JWT Authentication  
+- Role-Based Access Control (RBAC)  
+
+---
+
+## 📽 Demo
+
+🎥 **Concept & Basic Working Demo**  
+👉 https://youtu.be/h-U8bMTx_vw  
+
+---
+
+## 📈 Impact
+
+- ⚡ Faster fault reporting → reduced accident risk  
+- 📊 Clear accountability & real-time visibility  
+- 💰 Reduced unnecessary replacements  
+- 📦 Optimized inventory and vendor evaluation  
+- 🌱 Paperless, digital workflow  
+- 🛠 Extended lifespan of track fittings  
+
+---
+
+## 🚀 Status & Future Work
+
+- ✅ AI / ML modules implemented  
+- 🚧 Backend integrations in progress  
+- ⚠️ UI currently being rebuilt  
+
+**Future Scope**
+- Pilot deployment with railway vendors  
+- Predictive maintenance scoring  
+- Enhanced AI for severe QR degradation  
+- Full-scale integration with railway operational systems  
+
+---
+
+## 👥 Team
+
+**Team PiXels~**  
+Smart India Hackathon 2025  
+
+---
