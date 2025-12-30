@@ -1,161 +1,276 @@
-# 🚆 AI-Based Laser QR Code Tracking for Railway Track Fittings
+# Railway Track Fitting Maintenance System
 
-**Smart India Hackathon 2025**  
-**Team:** PiXels~  
-**Problem Statement ID:** 25021  
-**Theme:** Transportation & Logistics (Hardware)
+A cross-platform React web application for Indian Railways track-fitting identification and maintenance, with AI-powered QR code reconstruction.
 
----
+## Project Structure
 
-## 📌 Overview
+```
+sih/
+├── backend/                    # Flask backend with U-Net AI model
+│   ├── app.py                 # Main Flask application
+│   └── requirements.txt       # Python dependencies
+├── railway-track-app/         # React frontend
+│   └── src/
+│       ├── components/        # Reusable UI components
+│       ├── pages/            # Application pages
+│       ├── utils/            # API utilities
+│       └── data/             # Mock TMS/UDM datasets
+├── qr_healer_model.h5        # Trained U-Net model
+├── qrcodes/                  # QR code training data
+├── train.py                  # Model training script
+├── test_model.py             # Model testing script
+└── generate_data.py          # QR dataset generator
+```
 
-This project presents an **AI-driven, end-to-end tracking system** for Indian Railways track fittings using **laser-engraved QR codes**.
+## Features
 
-The objective is simple and overdue:  
-**replace manual, fragmented maintenance records with durable physical identification, digital traceability, and AI-assisted decision support.**
+### Core Functionality
+- **QR Code Scanning**: Upload or capture QR codes from track fittings
+- **AI Reconstruction**: U-Net model restores partially damaged QR codes (up to ~30% damage)
+- **Digital Traceability**: View complete fitting information from UDM/TMS databases
+- **Role-Based Access**: Worker, Supervisor, PWI, Station Master, Admin roles
+- **Fault Reporting**: Guided fault reporting workflow
+- **Dashboard & Analytics**: Real-time stats and alerts
+- **Offline Support**: (To be implemented - currently requires network)
 
----
+### User Roles
+1. **Worker** - Scan QR, view fitting info, report faults
+2. **Supervisor/PWI** - Verify reports, view section dashboards
+3. **Station Master** - View alerts, approve actions
+4. **Admin** - Full access, analytics, audit logs
 
-## 🔍 Problem Statement
+## Setup Instructions
 
-Current railway track maintenance suffers from:
+### Prerequisites
+- Node.js (v14+)
+- Python 3.8+
+- pip
 
-- ❌ No unique physical identification for individual fittings  
-- ❌ Manual / verbal fault reporting  
-- ❌ Disconnected data across **UDM** and **TMS** portals  
-- ❌ Poor lifecycle traceability and delayed accountability  
+### Backend Setup (Flask + AI Model)
 
-Result: slower maintenance, higher costs, and avoidable safety risks.
+1. Navigate to backend directory:
+```bash
+cd backend
+```
 
----
+2. Create virtual environment:
+```bash
+python3 -m venv venv
+source venv/bin/activate  # On Windows: venv\Scripts\activate
+```
 
-## 💡 Proposed Solution
+3. Install dependencies:
+```bash
+pip install -r requirements.txt
+```
 
-**Laser-engrave unique QR codes on each fitting → scan on-field → sync with UDM/TMS → analyze using AI → act faster, smarter, and traceably.**
+4. Start Flask server:
+```bash
+python app.py
+```
 
-Each fitting becomes **digitally traceable from manufacture to maintenance**.
+The backend will run on `http://localhost:5000`
 
----
+### Frontend Setup (React)
 
-## 🛠 System Architecture
+1. Navigate to React app:
+```bash
+cd railway-track-app
+```
 
-### 1️⃣ Hardware Layer
-- CNC laser engraving for permanent QR code marking  
-- Each QR links to:
-  - Vendor  
-  - Batch  
-  - Supply date  
-  - Warranty  
-- Protective epoxy coating for durability in harsh railway environments  
+2. Install dependencies:
+```bash
+npm install
+```
 
----
+3. Start development server:
+```bash
+npm start
+```
 
-### 2️⃣ Software Layer
-- Cross-platform application (Mobile + Desktop)
-- Role-Based Access:
-  - Patrolmen / Workers  
-  - PWI  
-  - Station Master  
-  - Traffic Control  
-  - Admin  
+The app will open at `http://localhost:3000`
 
-**Core Features**
-- QR scan → instant fitting history retrieval  
-- On-site fault and inspection logging  
-- AI-generated reports and trend analysis  
-- Dashboards and alerts for officers  
-- Offline-first mode with automatic cloud sync  
+## Usage
 
----
+### 1. Login
+- Select language (English/हिंदी)
+- Choose your role
+- Enter any username/password (demo mode)
 
-### 3️⃣ AI Layer
-- **QR Image Enhancement & Purification**  
-  Improves scan success for partially worn QR codes (minor damage)
+### 2. Scan QR Code
+- Click "Scan QR" in navigation
+- Upload a QR code image (or use camera on mobile)
+- If damaged, AI will automatically reconstruct it
+- View fitting information immediately
 
-- **Pattern & Trend Analysis**  
-  Detects recurring faults, vendor issues, and maintenance trends
+### 3. Test with Existing QR Codes
+You can test with the QR codes in `qrcodes/damaged/` folder:
+```bash
+# The damaged QR codes will trigger AI reconstruction
+# Clean codes in qrcodes/clean/ will scan directly
+```
 
-- **Decision Support**  
-  Suggests actions based on historical data — assists humans, doesn’t replace them
+### 4. View Dashboard
+- See overall stats: total fittings, open faults, critical alerts
+- View charts and recent alerts
+- Quick access to common actions
 
----
+### 5. Manual Lookup
+If QR scanning fails, enter Fitting ID manually:
+- Format: `FIT-2024-001`
+- Available test IDs: FIT-2024-001 through FIT-2024-015
 
-## 🔁 End-to-End Workflow
+## Mock Data
 
-1. Patrolman identifies a suspected fault  
-2. Scans laser-engraved QR on the fitting  
-3. AI enhances QR if worn  
-4. Data fetched from **UDM + TMS**  
-5. AI generates inspection report and recommendations  
-6. Patrolman updates status via the app  
-7. PWI / authorities receive alerts and dashboards  
-8. Updates pushed back to TMS → full lifecycle traceability  
+### UDM Dataset (`src/data/udm_data.csv`)
+Contains fitting master data:
+- Fitting ID, type, material
+- Vendor information
+- Batch ID, manufacture date
+- Warranty details
+- Current status
 
----
+### TMS Dataset (`src/data/tms_data.csv`)
+Contains inspection/maintenance records:
+- Inspection history
+- Fault reports
+- Inspector details
+- Location (section, KM)
+- Severity and status
 
-## 🧠 Tech Stack
+## AI Model Details
 
-### Hardware
-- CNC Laser Engraver  
-- Epoxy coating mechanism  
-- Mobile devices for QR scanning  
+### U-Net QR Reconstruction
+- **Model**: `qr_healer_model.h5`
+- **Architecture**: Convolutional Autoencoder
+- **Input Size**: 128x128 grayscale images
+- **Purpose**: Restore damaged/worn QR codes
+- **Training Data**: 1000 QR code pairs (clean/damaged)
 
-### Software
-- **Frontend:** React Native  
-- **Backend:** Flask (Python)  
-- **Databases:**  
-  - PostgreSQL (Primary)  
-  - SQLite (Offline cache)  
-  - Redis (Fast access / caching)  
-- **Cloud:** AWS  
+### How It Works
+1. QR image uploaded → Sent to Flask backend
+2. Attempt direct decode with pyzbar
+3. If fails → Preprocess image → U-Net reconstruction
+4. Decode healed image → Return data + confidence score
 
-### AI / ML
-- TensorFlow  
-- Hugging Face  
-- Scikit-learn  
-- Pandas  
+### Retrain Model (Optional)
+```bash
+# Generate new training data
+python generate_data.py
 
-### Security
-- JWT Authentication  
-- Role-Based Access Control (RBAC)  
+# Train model
+python train.py
 
----
+# Test model
+python test_model.py
+```
 
-## 📽 Demo
+## API Endpoints
 
-🎥 **Concept & Basic Working Demo**  
-👉 https://youtu.be/h-U8bMTx_vw  
+### Backend (Flask)
+- `GET /api/health` - Health check
+- `POST /api/scan-qr` - Scan QR code (with AI reconstruction)
+- `GET /api/fitting/<id>` - Get fitting details
 
----
+### Frontend API (Mock)
+All in `src/utils/api.js`:
+- `scanQRCode()` - Send image to backend
+- `getFittingDetails()` - Fetch from UDM/TMS
+- `getDashboardStats()` - Calculate stats
+- `submitFaultReport()` - Submit fault
+- `getAlerts()` - Get alerts by role
+- `login()` - Mock authentication
 
-## 📈 Impact
+## Tech Stack
 
-- ⚡ Faster fault reporting → reduced accident risk  
-- 📊 Clear accountability & real-time visibility  
-- 💰 Reduced unnecessary replacements  
-- 📦 Optimized inventory and vendor evaluation  
-- 🌱 Paperless, digital workflow  
-- 🛠 Extended lifespan of track fittings  
+### Frontend
+- React 18
+- React Router (routing)
+- Recharts (charts)
+- CSS Variables (theming)
 
----
+### Backend
+- Flask (Python web framework)
+- TensorFlow/Keras (AI model)
+- OpenCV (image processing)
+- pyzbar (QR decoding)
 
-## 🚀 Status & Future Work
+## Design Principles
 
-- ✅ AI / ML modules implemented  
-- 🚧 Backend integrations in progress  
-- ⚠️ UI currently being rebuilt  
+- **Industrial Theme**: Dark control-room aesthetic
+- **Mobile-First**: Optimized for field workers
+- **Large Typography**: Accessible in outdoor conditions
+- **Minimal Text**: Icon-heavy, language-agnostic where possible
+- **Offline-Ready**: (Future: Service workers + IndexedDB)
 
-**Future Scope**
-- Pilot deployment with railway vendors  
-- Predictive maintenance scoring  
-- Enhanced AI for severe QR degradation  
-- Full-scale integration with railway operational systems  
+## Development Notes
 
----
+### Adding New Features
+1. Add route in `App.js`
+2. Create page component in `src/pages/`
+3. Add navigation link in `Navigation.js` (with role check)
+4. Update API mocks in `src/utils/api.js`
 
-## 👥 Team
+### Role-Based UI
+Check user role before rendering:
+```javascript
+{user?.role === 'admin' && <AdminOnlyComponent />}
+```
 
-**Team PiXels~**  
-Smart India Hackathon 2025  
+### Extending Mock Data
+Edit CSV files in `src/data/`:
+- Keep headers consistent
+- Follow date format: YYYY-MM-DD
+- Use status: Active, Attention, Critical
 
----
+## Production Considerations
+
+1. **Replace Mock Auth**: Implement actual JWT with backend
+2. **Real Database**: Connect to actual UDM/TMS systems
+3. **File Upload**: Add proper file size limits and validation
+4. **Offline Mode**: Implement service workers + IndexedDB
+5. **Security**: Add HTTPS, CSP headers, input sanitization
+6. **Performance**: Lazy load pages, optimize images
+7. **Monitoring**: Add error tracking (Sentry), analytics
+
+## Troubleshooting
+
+### Backend won't start
+- Check Python version: `python --version` (need 3.8+)
+- Verify model file exists: `ls ../qr_healer_model.h5`
+- Check port 5000 is free: `lsof -i :5000`
+
+### Frontend shows CORS errors
+- Ensure Flask backend is running
+- Check `flask-cors` is installed
+- Verify API_BASE_URL in `src/utils/api.js`
+
+### QR scanning fails
+- Check image format (PNG, JPG supported)
+- Ensure file size < 5MB
+- Try with test images from `qrcodes/` folder
+- Check browser console for errors
+
+### CSV data not loading
+- Files must use `.csv` extension
+- Check CSV format (comma-separated, no extra quotes)
+- Webpack should copy CSV files to build (configure if needed)
+
+## Future Enhancements
+
+- [ ] Real-time camera QR scanning (react-qr-reader)
+- [ ] Voice notes for fault reports
+- [ ] Map view with track section visualization
+- [ ] Push notifications for critical alerts
+- [ ] Bulk QR generation tool
+- [ ] Mobile native app (React Native)
+- [ ] Multi-language support (i18n)
+- [ ] Predictive maintenance ML module
+
+## License
+
+Internal use - Indian Railways SIH Project
+
+## Contact
+
+For issues or questions, contact the development team.
