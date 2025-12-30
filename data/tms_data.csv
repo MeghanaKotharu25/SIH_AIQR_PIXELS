@@ -1,0 +1,16 @@
+inspection_id,fitting_id,inspection_date,inspector_name,inspector_role,section,km_location,fault_type,severity,description,action_taken,status,next_inspection
+INS-001,FIT-2024-001,2024-11-15,Rajesh Kumar,PWI,Delhi-Agra,45.2,None,Normal,Routine inspection - all parameters normal,None,Closed,2025-02-15
+INS-002,FIT-2024-002,2024-11-20,Suresh Patil,Worker,Mumbai-Pune,112.8,Wear,Minor,Slight surface wear observed on pad,Monitor closely,Open,2024-12-20
+INS-003,FIT-2024-003,2024-11-10,Amit Singh,Supervisor,Kolkata-Howrah,23.5,None,Normal,Sleeper condition good,None,Closed,2025-05-10
+INS-004,FIT-2024-004,2024-11-25,Vikram Mehta,Worker,Chennai-Bangalore,67.3,Crack,Critical,Visible crack in liner material,Replace immediately,Open,2024-12-01
+INS-005,FIT-2024-005,2024-11-28,Rajesh Kumar,PWI,Delhi-Agra,45.3,Loosening,Critical,Clip showing signs of fatigue and loosening,Schedule replacement,Open,2024-12-05
+INS-006,FIT-2024-006,2024-11-12,Priya Sharma,Supervisor,Mumbai-Pune,113.1,Corrosion,Minor,Minor surface rust on fish plate,Apply anti-rust coating,Closed,2025-02-12
+INS-007,FIT-2024-007,2024-11-18,Suresh Patil,Worker,Mumbai-Pune,112.9,None,Normal,Pad functioning normally,None,Closed,2025-02-18
+INS-008,FIT-2024-008,2024-11-22,Arun Verma,PWI,Kolkata-Howrah,24.1,Decay,Moderate,Wood showing signs of decay,Monitor and plan replacement,Open,2024-12-22
+INS-009,FIT-2024-009,2024-11-16,Deepak Nair,Worker,Chennai-Bangalore,68.5,None,Normal,Clip in good condition,None,Closed,2025-02-16
+INS-010,FIT-2024-010,2024-11-24,Vikram Mehta,Worker,Chennai-Bangalore,67.4,Discoloration,Minor,Slight UV discoloration,Normal aging process,Closed,2025-02-24
+INS-011,FIT-2024-011,2024-11-14,Amit Singh,Supervisor,Kolkata-Howrah,23.6,None,Normal,Concrete sleeper integrity maintained,None,Closed,2025-05-14
+INS-012,FIT-2024-012,2024-11-26,Priya Sharma,Supervisor,Mumbai-Pune,114.2,None,Normal,New pad installation verified,None,Closed,2025-02-26
+INS-013,FIT-2024-013,2024-11-29,Rajesh Kumar,PWI,Delhi-Agra,45.4,Deformation,Critical,Clip showing permanent deformation,Urgent replacement required,Open,2024-12-02
+INS-014,FIT-2024-014,2024-11-17,Arun Verma,PWI,Kolkata-Howrah,24.3,None,Normal,Fish plate joints secure,None,Closed,2025-02-17
+INS-015,FIT-2024-015,2024-11-27,Deepak Nair,Worker,Chennai-Bangalore,68.7,Wear,Moderate,Liner showing moderate wear,Plan replacement within 2 weeks,Open,2024-12-10
